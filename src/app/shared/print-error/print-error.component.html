@@ -1,0 +1,10 @@
+<div class="ion-item" lines="none" *ngIf="control.errors && control.dirty">
+  <div class="ion-item" *ngFor="let errorKey of errorsKeys">
+    <p
+      class="style-p gotham-book fs-11"
+      *ngIf="control.hasError(errorKey) && control.touched"
+    >
+      {{ errors[errorKey] }}
+    </p>
+  </div>
+</div>

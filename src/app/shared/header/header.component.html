@@ -1,0 +1,14 @@
+<mat-toolbar class="HeaderBanorte">
+  <div class="logo"></div>
+  <div class="spacer"></div>
+  <div *ngIf="getLogin()">
+    <button
+      (click)="cerrarSesion()"
+      type="submit"
+      mat-raised-button
+      class="card_button"
+    >
+      cerrar sesion
+    </button>
+  </div>
+</mat-toolbar>

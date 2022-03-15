@@ -1,0 +1,48 @@
+<div class="loginContainer">
+  <div class="card">
+    <div class="card_header">
+      <h4><b>Consola Administrativa</b></h4>
+    </div>
+    <div class="card_body">
+      <h3 class="title-section__text">Bienvenido</h3>
+      <p class="title-section__text">Para continuar, por favor inicia sesión</p>
+      <form (ngSubmit)="sendLogin()" [formGroup]="loginForm">
+        <div class="customField">
+          <label class="customField_label">Usuario</label>
+          <input
+            autocomplete="off"
+            type="text"
+            formControlName="email"
+            class="customField_input"
+          />
+          <app-print-error
+            [errors]="loginError.email"
+            [control]="loginForm.get('email') || loginForm"
+          ></app-print-error>
+        </div>
+        <div class="customField">
+          <label class="customField_label">Contraseña</label>
+          <input
+            autocomplete="off"
+            type="password"
+            formControlName="phrase"
+            class="customField_input"
+          />
+          <app-print-error
+            [errors]="loginError.phrase"
+            [control]="loginForm.get('phrase') || loginForm"
+          ></app-print-error>
+        </div>
+
+        <button
+          type="submit"
+          mat-raised-button
+          class="card_button"
+          [disabled]="loginForm.invalid"
+        >
+          Aceptar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

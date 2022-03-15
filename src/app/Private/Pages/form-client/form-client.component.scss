@@ -1,0 +1,57 @@
+.prueba3 {
+  border: 1px solid red;
+  min-height: 100%;
+  height: 100%;
+}
+.container__form {
+  margin: 0px 20px;
+}
+
+.input {
+  width: 100%;
+}
+.prueba {
+  padding-top: 8px;
+  padding-left: 25px;
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+}
+
+.actions__buttons {
+  display: flex;
+  // border: 1px solid #eb0029;
+  // width: 150px;
+}
+.aceptar {
+  color: white;
+  background-color: #eb0029;
+  width: 150px;
+}
+
+.aceptar:not([disabled]):hover {
+  background-color: #4e4044;
+  color: white;
+}
+
+.timePicker {
+  padding: 0 5px;
+}
+
+.cancelar {
+  border: 2px solid #eb0029;
+  color: #eb0029;
+  margin-right: 20px;
+  width: 100px;
+}
+
+.cancelar:not([disabled]):hover {
+  background-color: #4e4044;
+  color: white;
+}
+
+.cancelarDisabled {
+  margin-right: 20px;
+}

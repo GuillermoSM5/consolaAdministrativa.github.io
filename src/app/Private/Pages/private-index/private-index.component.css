@@ -1,0 +1,13 @@
+.backgroundTransparent {
+  /* background-color: transparent; */
+  background-color: #f5f5f5;
+}
+
+.section {
+  min-width: 100%;
+}
+
+mat-sidenav {
+  overflow: hidden;
+  width: 300px;
+}

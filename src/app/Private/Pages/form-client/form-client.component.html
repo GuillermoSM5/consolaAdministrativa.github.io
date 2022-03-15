@@ -1,0 +1,204 @@
+<div class=".container-fluid">
+  <div class="title mt-4">
+    <h2 *ngIf="url === 'searchClient'">Detalles del Cliente</h2>
+    <h2 *ngIf="url === 'addClient'">Agergar Cliente</h2>
+  </div>
+  <div class="container__form mt-4">
+    <form [formGroup]="clientForm" autocomplete="off" class="form">
+      <div class="row mb-5">
+        <div class="col">
+          <mat-form-field appearance="outline" color="accent" class="input">
+            <mat-label>idCliente</mat-label>
+            <input matInput formControlName="id" />
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="outline" color="accent" class="input">
+            <mat-label>Nombre del Cliente</mat-label>
+            <input matInput formControlName="name" />
+            <mat-error>Este campo es requerido</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="outline" color="primary" class="input">
+            <mat-label>Fecha de Registro</mat-label>
+            <input
+              matInput
+              [matDatepicker]="registrationDate"
+              formControlName="registrationDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="registrationDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #registrationDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="outline" color="primary" class="input">
+            <mat-label>Fecha de Cancelación</mat-label>
+            <input
+              matInput
+              [matDatepicker]="cancelationDate"
+              formControlName="cancelationDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="cancelationDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #cancelationDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col">
+          <mat-form-field appearance="outline" color="accent" class="input">
+            <mat-label>Cargo por Servicio</mat-label>
+            <input
+              matInput
+              formControlName="serviceCharge"
+              appTwoDigitDecimaNumber
+            />
+            <mat-error>Este campo es requerido</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="outline" color="accent" class="input">
+            <mat-label>Cuenta Cargo</mat-label>
+            <input
+              matInput
+              formControlName="chargeAccount"
+              minlength="10"
+              maxlength="10"
+              mask="0*"
+            />
+            <mat-error *ngIf="this.clientForm.get('chargeAccount')?.errors">{{
+              this.clientForm.get("chargeAccount")?.errors?.['minlength']?'Se necesitan 10 caractares para este campo':'Este campo es requerido'
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="outline" color="accent" class="input">
+            <mat-label>Cuenta Desposito</mat-label>
+            <input
+              matInput
+              formControlName="depositAccount"
+              minlength="10"
+              maxlength="10"
+              mask="0*"
+            />
+            <mat-error *ngIf="this.clientForm.get('depositAccount')?.errors">{{
+              this.clientForm.get("depositAccount")?.errors?.['minlength']?'Se necesitan 10 caractares para este campo':'Este campo es requerido'
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col">
+          <mat-form-field appearance="outline" color="accent" class="input">
+            <mat-label>Renta Mensual</mat-label>
+            <input
+              matInput
+              formControlName="monthlyFee"
+              appTwoDigitDecimaNumberMonthlyFee
+            />
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="outline" color="accent" class="input">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" />
+            <mat-error *ngIf="this.clientForm.get('depositAccount')?.errors">{{
+              this.clientForm.get("email")?.errors?.['email']?'Escriba un formato correcto de correo':'Este campo es requerido'
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col col-md-4">
+          <mat-form-field appearance="outline" color="accent" class="input">
+            <mat-label>Hora de Entrega</mat-label>
+            <input
+              type="time"
+              matInput
+              name="week"
+              formControlName="deliveryTime"
+              class="timePicker"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col prueba">
+          <dt>Enviar Archivo(Conciliación)</dt>
+          <mat-checkbox
+            class="example-margin"
+            color="primary"
+            formControlName="sendFile"
+          ></mat-checkbox>
+        </div>
+        <!-- <div class="col prueba">
+          <dt>Enviar Archivo(Renta Mensual)</dt>
+          <mat-checkbox
+            class="example-margin"
+            color="primary"
+            formControlName="sendMonthlyFeeFile"
+          ></mat-checkbox>
+        </div> -->
+        <div class="col prueba">
+          <dt>Activo</dt>
+          <mat-checkbox
+            formControlName="active"
+            class="example-margin"
+            color="primary"
+          ></mat-checkbox>
+        </div>
+        <div class="col prueba">
+          <dt>Sin Limite de Transacciones</dt>
+          <mat-checkbox
+            class="example-margin"
+            color="primary"
+            formControlName="transactionsLimit"
+          ></mat-checkbox>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col actions" *ngIf="this.url === 'addClient'">
+          <div class="actions__buttons">
+            <button mat-raised-button class="cancelar" (click)="cancel()">
+              Cancelar
+            </button>
+            <button mat-raised-button class="aceptar" (click)="guardar()">
+              Guardar
+            </button>
+          </div>
+        </div>
+        <div class="col actions" *ngIf="this.url === 'searchClient'">
+          <div class="actions__buttons">
+            <button mat-raised-button class="cancelar" (click)="cancel()">
+              Cancelar
+            </button>
+            <button
+              mat-raised-button
+              (click)="delete()"
+              [disabled]="clientForm.disabled"
+              [ngClass]="{
+                cancelarDisabled: clientForm.disabled,
+                cancelar: !clientForm.disabled
+              }"
+            >
+              Borrar
+            </button>
+            <button
+              mat-raised-button
+              class="aceptar"
+              (click)="modificar()"
+              [disabled]="clientForm.disabled"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

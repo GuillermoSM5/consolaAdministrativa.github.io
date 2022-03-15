@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <h2 class="title mt-4">Log de Mantenimientos</h2>
+</div>
+<div class="mt-4">
+  <form
+    action=""
+    class="container__form"
+    [formGroup]="formFilter"
+    autocomplete="off"
+  >
+    <div class="row">
+      <div class="col-3">
+        <mat-form-field
+          class="example-form-field"
+          color="accent"
+          appearance="outline"
+        >
+          <mat-label>Id de Cliente</mat-label>
+          <input
+            matInput
+            type="text"
+            class="inputFilter"
+            formControlName="id"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field appearance="outline" class="example-form-field">
+          <mat-label>Seleccione un rango de Fechas</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input
+              matStartDate
+              placeholder="Fecha Inicial"
+              formControlName="startDate"
+            />
+            <input
+              matEndDate
+              placeholder="Fecha Final"
+              formControlName="endDate"
+            />
+          </mat-date-range-input>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+      <div class="col buttonFilter">
+        <button mat-flat-button class="search" (click)="search()">
+          Buscar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

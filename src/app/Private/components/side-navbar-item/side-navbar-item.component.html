@@ -1,0 +1,28 @@
+<mat-expansion-panel *ngIf="links.length > 0">
+  <mat-expansion-panel-header class="menu__element">
+    <mat-panel-title> {{ text }} </mat-panel-title>
+  </mat-expansion-panel-header>
+  <ul>
+    <div
+      class="element__text"
+      [routerLinkActive]="'menu__element--active'"
+      [routerLink]="link.link"
+      *ngFor="let link of links"
+    >
+      <li>
+        {{ link.text }}
+      </li>
+    </div>
+  </ul>
+</mat-expansion-panel>
+
+<li
+  class="menu__element_header"
+  [routerLinkActive]="'menu__element--active'"
+  *ngIf="links.length === 0"
+  routerLink="{{ text === 'Home' ? 'home' : '' }}"
+>
+  <span class="element__text">
+    {{ text }}
+  </span>
+</li>

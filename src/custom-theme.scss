@@ -1,0 +1,58 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+//Gama Colores
+$my-primary-color: (
+  100: #ffc9cf,
+  200: #f49294,
+  500: #eb0029,
+  600: #eb0029,
+  700: #eb0029,
+  contrast: (
+    200: #f49294,
+  ),
+);
+
+$my-accent-color: (
+  100: #5b6670,
+  200: #5b6670,
+  500: #5b6670,
+  600: #5b6670,
+  700: #5b6670,
+  contrast: (
+    200: #f49294,
+  ),
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$consolaFrontEnd-primary: mat.define-palette($my-primary-color);
+$consolaFrontEnd-accent: mat.define-palette($my-accent-color);
+
+// The warn palette is optional (defaults to red).
+$consolaFrontEnd-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$consolaFrontEnd-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $consolaFrontEnd-primary,
+      accent: $consolaFrontEnd-accent,
+      warn: $consolaFrontEnd-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($consolaFrontEnd-theme);

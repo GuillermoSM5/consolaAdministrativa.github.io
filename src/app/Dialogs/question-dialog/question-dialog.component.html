@@ -1,0 +1,23 @@
+<div>
+  <h5 class="text-center title">{{ data.question }}</h5>
+  <div>
+    <div class="mat-dialog-actions actions">
+      <button
+        class="portal-btn-secondary"
+        type="button"
+        mat-stroked-button
+        (click)="submit(false)"
+      >
+        No por ahora
+      </button>
+      <button
+        class="portal-btn-primary"
+        type="submit"
+        mat-stroked-button
+        (click)="submit(true)"
+      >
+        Aceptar
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<mat-sidenav-container
+  [ngStyle]="{ height: windowHeight }"
+  class="backgroundTransparent"
+>
+  <mat-sidenav
+    [mode]="modeMenu"
+    position="start"
+    opened="true"
+    [disableClose]="false"
+  >
+    <app-side-navbar></app-side-navbar>
+  </mat-sidenav>
+  <section class="section">
+    <router-outlet></router-outlet>
+  </section>
+</mat-sidenav-container>
